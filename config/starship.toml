@@ -1,0 +1,145 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$character\
+[](fg:#909090 bg:#021545)\
+$battery\
+$username\
+[](bg:#1d3961 fg:#021545)\
+$directory\
+[](fg:#1d3961 bg:#325677)\
+$git_branch\
+$git_status\
+[](fg:#325677 bg:#446e8a)\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#446e8a bg:#5b8da1)\
+$docker_context\
+[](fg:#5b8da1 bg:#475b5f)\
+$time\
+[ ](fg:#475b5f)\
+"""
+
+
+[battery]
+full_symbol = '🔋'
+charging_symbol = '⚡️'
+discharging_symbol = '💀'
+format = '[$symbol](bg:#9A348E fg:#FFFFFF)'
+disabled = false
+
+[character]
+success_symbol = '✔ '
+error_symbol = '✘ '
+format = '[$symbol](bg:#909090 fg:#FFFFFF)'
+
+[username]
+show_always = true
+style_user = "bg:#021545"
+style_root = "bg:#021545"
+format = '[ $user]($style)'
+disabled = false
+
+[directory]
+style = "bg:#1d3961"
+format = "[ $path ]($style)"
+truncation_length = 2
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"node_modules" = ""
+".git" = ""
+
+[docker_context]
+symbol = " "
+style = "bg:#5b8da1"
+format = '[$symbol $context ]($style) $path'
+
+[c]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+
+[elixir]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#325677"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#325677"
+format = '[$all_status$ahead_behind]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#446e8a"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#475b5f"
+format = '[  $time ]($style)'
+
+
+
+[package]
+disabled = true
