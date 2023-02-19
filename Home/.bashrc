@@ -5,14 +5,10 @@ neofetch
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='lsd -al'
 alias cat='bat'
+alias ls='exa --icons -la'
 
+eval "$(starship init bash)"
+export FZF_CTRL_T_COMMAND="find \! \( -path '*/.git' -prune \) -printf '%P\n'"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. /usr/share/powerline/bindings/bash/powerline.sh
