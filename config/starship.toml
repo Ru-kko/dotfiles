@@ -2,15 +2,15 @@
 
 format = """
 $character\
-[](fg:#909090 bg:#021545)\
+[](fg:#909090 bg:#021545)\
 $battery\
 $username\
-[](bg:#1d3961 fg:#021545)\
+[](bg:#1d3961 fg:#021545)\
 $directory\
-[](fg:#1d3961 bg:#325677)\
+[](fg:#1d3961 bg:#325677)\
 $git_branch\
 $git_status\
-[](fg:#325677 bg:#446e8a)\
+[](fg:#325677 bg:#446e8a)\
 $c\
 $elixir\
 $elm\
@@ -22,11 +22,11 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[](fg:#446e8a bg:#5b8da1)\
+[](fg:#446e8a bg:#5b8da1)\
 $docker_context\
-[](fg:#5b8da1 bg:#475b5f)\
+[](fg:#5b8da1 bg:#475b5f)\
 $time\
-[ ](fg:#475b5f)\
+[ ](fg:#475b5f)\
 """
 
 
