@@ -15,6 +15,11 @@ source $ZSH/oh-my-zsh.sh
 alias cat='bat'
 alias ls='exa --icons -la'
 
+if [ "$TERM" = "xterm-kitty" ] 
+then
+	alias img='kitten icat'
+fi
+
 [[ $- != *i* ]] && return
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
