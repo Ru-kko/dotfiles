@@ -2,7 +2,7 @@
 
 format = """
 $character\
-[](fg:#909090 bg:#021545)\
+[](fg:#021545)\
 $battery\
 $username\
 [](bg:#1d3961 fg:#021545)\
@@ -34,13 +34,13 @@ $time\
 full_symbol = '🔋'
 charging_symbol = '⚡️'
 discharging_symbol = '💀'
-format = '[$symbol](bg:#9A348E fg:#FFFFFF)'
+format = '[$symbol]( bg:#9A348E fg:#FFFFFF)'
 disabled = false
 
 [character]
 success_symbol = '✔ '
 error_symbol = '✘ '
-format = '[$symbol](bg:#909090 fg:#FFFFFF)'
+format = '[$symbol](fg:#FFFFFF)'
 
 [username]
 show_always = true
