@@ -4,10 +4,10 @@ local cof_dir = vim.fn.stdpath("config")
 
 if vim.fn.has("linux") then
 	javaHome = "/usr/lib/jvm/default"
-	configDir = "config_linux"
+	configDir = "/config_linux"
 elseif vim.fn.has("win32") then
 	javaHome = "" -- TODO set windows jdk path
-	configDir = "config_win"
+	configDir = "/config_win"
 end
 
 local jdtls_path = cof_dir .. "/bin/jdtls"
