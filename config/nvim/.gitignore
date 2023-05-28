@@ -1,1 +1,4 @@
-./cache
+/cache/**
+**/config_*/**
+!**/config_*/config.ini
+

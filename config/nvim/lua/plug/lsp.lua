@@ -11,9 +11,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			servers = {
-				jdtls = {
-					require("langs.java")
-				},
+				jdtls = require("langs.java"),
 				lua_ls = {
 					settings = {
             Lua = {
@@ -39,7 +37,11 @@ return {
 			)
 
 			for _, server in pairs(servers) do
-				lspconfig[server].setup(opts.servers[server] or {})
+				local sv = lspconfig[server]
+				if sv.capabilities == nil then
+					sv.capabilities = capabilities
+				end
+				sv.setup(opts.servers[server] or {})
 			end
 		end,
 		dependencies = {
