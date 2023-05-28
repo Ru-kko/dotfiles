@@ -5,8 +5,6 @@ local servers = {
 	"emmet_ls",
 }
 
-local null_deps = {}
-
 local function attach_keys(_, buf)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(buf, ...)
@@ -47,7 +45,6 @@ return {
 		config = function(_, opts)
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local null_ls = require("null-ls")
 
 			lspconfig.util.default_config.capabilities =
 					vim.tbl_deep_extend("force", lspconfig.util.default_config.capabilities, capabilities)
@@ -100,56 +97,6 @@ return {
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup()
-		end,
-	},
-	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			ensure_installed = {
-				"prettierd",
-				"prettier",
-				"rustfmt",
-				"gofumpt",
-				"eslint_d",
-				"stylua",
-			},
-			automatic_installation = true,
-		},
-		config = true,
-		dependencies = {
-			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
-	},
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local null_ls = require("null-ls")
-			local formatting, diagnostics = null_ls.builtins.formatting, null_ls.builtins.diagnostics
-
-			local on_attach = function(client, bufnr)
-				if client.supports_method("textDocument/formatting") then
-					vim.keymap.set("n", "<Leader>ff", function()
-						vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-					end, { buffer = bufnr, desc = "[lsp] format" })
-				end
-			end
-			null_ls.setup({
-				sources = {
-					diagnostics.eslint_d.with({
-						condition = function(utils)
-							return utils.root_has_file({ ".eslintrc.js" })
-						end,
-					}),
-					formatting.prettierd,
-					formatting.stylua,
-					formatting.rustfmt,
-					formatting.gofumpt,
-				},
-				on_attach = on_attach,
-			})
 		end,
 	},
 	{

@@ -19,18 +19,6 @@ return {
       { "<leader>q", "<cmd>Trouble<CR>" },
   	},
 	},
-	-- Autopairs
-	{
-    "windwp/nvim-autopairs",
-    keys = {
-      { "(", mode = "i" },
-      { "{", mode = "i" },
-      { "[", mode = "i" },
-      { '"', mode = "i" },
-      { "'", mode = "i" }
-    },
-    config = true,
-  },
 	-- Commeter
 	{
     "danymat/neogen",

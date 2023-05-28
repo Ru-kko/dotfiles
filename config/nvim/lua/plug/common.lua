@@ -18,5 +18,6 @@ return {
   },
 	require('plug.editor'),
 	require('plug.theme'),
-	require('plug.lsp')
+	require('plug.lsp'),
+	require("plug.coding")
 }
