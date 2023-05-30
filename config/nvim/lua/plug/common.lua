@@ -19,5 +19,6 @@ return {
 	require('plug.editor'),
 	require('plug.theme'),
 	require('plug.lsp'),
-	require("plug.coding")
+	require("plug.coding"),
+  require("plug.telescope")
 }
