@@ -1,19 +1,17 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 -- Save
-keymap({ "n", "i", "v" }, "<C-s>", "<cmd>:w<CR>")
+keymap({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", opts)
+
+-- Close
+keymap({"n", "i", "v"}, "<C-q>", "<cmd>bd<CR>", opts)
 
 -- Move lines like vscode
 keymap({ "n", "i" }, "<A-j>", "<cmd>m .+1<CR>==")
 keymap({ "n", "i" }, "<A-k>", "<cmd>m .-2<CR>==")
 
-keymap("v", "<A-j>", "<cmd>m '>+1<CR>gv=gv")
-keymap("v", "<A-k>", "<cmd>m '<-2<CR>gv=gv")
-
--- Quit
-keymap("n", "<C-q>", ":q")
-keymap("n", "<C-q>", "<ESC>:q<CR>")
-keymap("n", "<C-q>", "<ESC>:q<CR>")
+keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Lazy
 keymap("n", "<leader>l", ":Lazy<CR>")
