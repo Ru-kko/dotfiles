@@ -1,16 +1,16 @@
 return {
 	-- Autopairs
 	{
-    "windwp/nvim-autopairs",
-    keys = {
-      { "(", mode = "i" },
-      { "{", mode = "i" },
-      { "[", mode = "i" },
-      { '"', mode = "i" },
-      { "'", mode = "i" }
-    },
-    config = true,
-  },
+		"windwp/nvim-autopairs",
+		keys = {
+			{ "(", mode = "i" },
+			{ "{", mode = "i" },
+			{ "[", mode = "i" },
+			{ '"', mode = "i" },
+			{ "'", mode = "i" },
+		},
+		config = true,
+	},
 	-- Null-ls installer
 	{
 		"jay-babu/mason-null-ls.nvim",
@@ -62,5 +62,46 @@ return {
 				on_attach = on_attach,
 			})
 		end,
+	},
+	-- Indentation
+	{
+		"nmac427/guess-indent.nvim",
+		event = "BufReadPre",
+		cmd = "GuessIndent",
+		opts = {
+			auto_cmd = true,
+			buftype_exclude = {
+				"help",
+				"nofile",
+				"terminal",
+				"prompt",
+			},
+		},
+		config = true,
+	},
+	-- Text illumination
+	{
+		"RRethy/vim-illuminate",
+		event = "BufReadPre",
+		config = function()
+			require("illuminate").configure()
+		end,
+	},
+	-- Commeteer
+	{
+		"echasnovski/mini.comment",
+		event = "VeryLazy",
+		opts = {
+			options = {
+				custom_commentstring = function()
+					return require("ts_context_commentstring.internal").calculate_commentstring()
+							or vim.bo.commentstring
+				end,
+			},
+		},
+		config = true,
+		dependencies = {
+			{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+		},
 	},
 }
