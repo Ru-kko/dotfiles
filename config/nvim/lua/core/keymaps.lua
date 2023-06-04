@@ -4,7 +4,15 @@ local opts = { noremap = true, silent = true }
 keymap({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", opts)
 
 -- Close
-keymap({"n", "i", "v"}, "<C-q>", "<cmd>bd<CR>", opts)
+keymap({ "n", "i", "v" }, "<C-q>", function()
+	local buff_num = #vim.api.nvim_list_bufs()
+	if buff_num <= 1 then
+		vim.cmd("q")
+	else
+		vim.cmd("bd")
+	end
+	--"<cmd>bd==<CR>"
+end, opts)
 
 -- Move lines like vscode
 keymap({ "n", "i" }, "<A-j>", "<cmd>m .+1<CR>==")
@@ -14,7 +22,7 @@ keymap("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 keymap("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Lazy
-keymap("n", "<leader>l", ":Lazy<CR>")
+keymap("n", "<leader>ll", ":Lazy<CR>")
 
 -- Lsp
 keymap({ "n", "i" }, "<C-Enter>", "<cmd>Lspsaga goto_definition<CR>", opts)
