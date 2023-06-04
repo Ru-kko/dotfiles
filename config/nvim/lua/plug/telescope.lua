@@ -19,7 +19,7 @@ return {
 			"<leader>tf",
 			function()
 				require("telescope.builtin").live_grep()
-			end
+			end,
 		},
 		{
 			"<C-t>",
@@ -31,6 +31,9 @@ return {
 			"<cmd>:Telescope file_browser path=%:p:h select_buffer=true<CR>",
 			mode = { "n", "v", "i" },
 		},
+		{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+		{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+		{ "<leader>gs", "<cmd>Telescope git_status<CR>",  desc = "status" },
 	},
 	config = function()
 		local telescope = require("telescope")

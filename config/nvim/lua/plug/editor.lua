@@ -1,4 +1,28 @@
 return {
+  -- git
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      current_line_blame = true,
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
+        map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+      end,
+    },
+  },
   -- Tabs
   {
     "akinsho/bufferline.nvim",
@@ -17,18 +41,16 @@ return {
     },
     keys = {
       {
-        "<leader><tab>",
+        "<leader>k",
         function()
           require("bufferline").cycle(1)
         end,
-        mode = { "n", "i", "v" },
       },
       {
-        "<S-tab>",
+        "<leader>j",
         function()
           require("bufferline").cycle(-1)
         end,
-        mode = { "n", "i", "v" },
       },
     },
     config = function(_, opts)
@@ -121,5 +143,76 @@ return {
     config = function()
       require("plug.treesitter")
     end,
+  },
+  -- Spits
+  {
+    "mrjones2014/smart-splits.nvim",
+    keys = {
+      {
+        "<C-h>",
+        function()
+          require("smart-splits").move_cursor_left()
+        end,
+        desc = "Move to left split",
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<C-l>",
+        function()
+          require("smart-splits").move_cursor_right()
+        end,
+        desc = "Move to right split",
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<C-k>",
+        function()
+          require("smart-splits").move_cursor_up()
+        end,
+        desc = "Move to above split",
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<C-j>",
+        function()
+          require("smart-splits").move_cursor_down()
+        end,
+        desc = "Move to below split",
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<S-j>",
+        function()
+          require("smart-splits").resize_down()
+        end,
+        desc = "Resize split down",
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<S-k>",
+        function()
+          require("smart-splits").resize_up()
+        end,
+        desc = "Resize split up",
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<S-l>",
+        function()
+          require("smart-splits").resize_right()
+        end,
+        desc = "Resize split right",
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<S-h>",
+        function()
+          require("smart-splits").resize_left()
+        end,
+        desc = "Resize split left",
+        mode = { "n", "i", "v" },
+      },
+    },
+    opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
   },
 }
