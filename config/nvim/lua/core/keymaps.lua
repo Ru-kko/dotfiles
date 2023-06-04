@@ -5,13 +5,21 @@ keymap({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", opts)
 
 -- Close
 keymap({ "n", "i", "v" }, "<C-q>", function()
-	local buff_num = #vim.api.nvim_list_bufs()
-	if buff_num <= 1 then
+	local buffs = vim.api.nvim_list_bufs()
+	local file_num = 0
+
+	for _, buffer in ipairs(buffs) do
+		local bufInfo = vim.fn.getbufinfo(buffer)
+		if bufInfo[1].buflisted == 1 then
+			file_num = file_num + 1
+		end
+	end
+
+	if file_num <= 1 then
 		vim.cmd("q")
 	else
 		vim.cmd("bd")
 	end
-	--"<cmd>bd==<CR>"
 end, opts)
 
 -- Move lines like vscode
