@@ -16,9 +16,9 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
-			transparent_background = true,
+			transparent_background = false,
 			term_colors = true,
-			compile_path = vim.fn.stdpath('config') .. '/cache/catppuccin',
+			compile_path = vim.fn.stdpath("config") .. "/cache/catppuccin",
 			integrations = {
 				notify = false,
 			},
@@ -27,7 +27,7 @@ return {
 			},
 		},
 		config = function(_, opts)
-			vim.cmd.colorscheme("catppuccin-mocha")
+			vim.cmd [[colorscheme catppuccin]]
 			require("catppuccin").setup(opts)
 		end,
 	},
@@ -76,6 +76,7 @@ return {
 						},
 					},
 					opts = {
+						background_colour = "#000000",
 						timeout = 3000,
 						max_height = function()
 							return math.floor(vim.o.lines * 0.5)

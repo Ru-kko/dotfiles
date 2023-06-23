@@ -14,7 +14,4 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("plug.common", {
 	defaults = { lazy = true },
-	install = {
-		colorscheme = { "tokyonight-moon", "habamax" },
-  }
 })
