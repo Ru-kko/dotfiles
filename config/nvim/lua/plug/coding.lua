@@ -54,6 +54,7 @@ return {
 							return utils.root_has_file({ ".eslintrc.js" })
 						end,
 					}),
+				  null_ls.builtins.code_actions.gitsigns,
 					formatting.prettierd,
 					formatting.stylua,
 					formatting.rustfmt,
