@@ -11,8 +11,8 @@ local function attach_keys(_, buf)
 	end
 	local opts = { noremap = true, silent = true }
 
-	buf_set_keymap("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("i", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	buf_set_keymap("n", "<leader>h", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 end
 
@@ -116,20 +116,22 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						local col = vim.fn.col(".") - 1
+
+						if cmp.visible() then
+							cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+						elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+							fallback()
+						else
+							cmp.complete()
+						end
+					end, { "i", "s" }),
 				}),
 				formatting = {
 					fields = { "menu", "abbr", "kind" },
-					format = function(entry, item)
-						local menu_icon = {
-							nvim_lsp = "λ",
-							vsnip = "⋗",
-							buffer = "Ω",
-							path = "🖫",
-						}
-						item.menu = menu_icon[entry.source.name]
-						return item
-					end,
+					format = require("lspkind").cmp_format({ maxwidth = 50 })
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
@@ -139,6 +141,7 @@ return {
 			})
 		end,
 		dependencies = {
+			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
