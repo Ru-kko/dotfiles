@@ -143,6 +143,7 @@ return {
     config = function()
       require("plug.treesitter")
     end,
+    dependencies = { "windwp/nvim-ts-autotag" },
   },
   -- Spits
   {
