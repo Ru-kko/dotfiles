@@ -3,6 +3,7 @@ local servers = {
 	"jdtls",
 	"tsserver",
 	"emmet_ls",
+	"hls",
 }
 
 local function attach_keys(_, buf)
