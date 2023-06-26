@@ -27,7 +27,7 @@ return {
 			mode = { "n", "v", "i" },
 		},
 		{
-			"<S-t>",
+			"<A-t>",
 			"<cmd>:Telescope file_browser path=%:p:h select_buffer=true<CR>",
 			mode = { "n", "v", "i" },
 		},
