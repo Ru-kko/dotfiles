@@ -213,7 +213,52 @@ return {
         desc = "Resize split left",
         mode = { "n", "v" },
       },
+      {
+        "<ESC>",
+        [[<C-\><C-n>]],
+        mode = { "t" }
+      }
     },
     opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = { "ToggleTerm", "TermExec" },
+    keys = {
+      {
+        "<F7>",
+        function()
+          vim.cmd([[ToggleTerm direction=horizontal]])
+        end,
+        desc = "attch horizontal term",
+      },
+      {
+        "<F8>",
+        function()
+          vim.cmd([[ToggleTerm direction=float]])
+        end,
+        desc = "attch float term",
+      },
+      {
+        "<F9>",
+        function()
+          vim.cmd([[ToggleTerm direction=vertical size=30]])
+        end,
+        desc = "attch vertical term",
+      },
+    },
+    opts = {
+      size = 10,
+      on_create = function()
+        vim.opt.foldcolumn = "0"
+        vim.opt.signcolumn = "no"
+      end,
+      shading_factor = 2,
+      direction = "horizontal",
+      float_opts = {
+        border = "curved",
+        highlights = { border = "Normal", background = "Normal" },
+      },
+    },
   },
 }
