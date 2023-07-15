@@ -38,7 +38,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local null_ls = require("null-ls")
-			local formatting, diagnostics = null_ls.builtins.formatting, null_ls.builtins.diagnostics
+			local formatting, diagnostics,  code_actions = null_ls.builtins.formatting, null_ls.builtins.diagnostics, null_ls.builtins.code_actions
 
 			local on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
@@ -51,10 +51,11 @@ return {
 				sources = {
 					diagnostics.eslint_d.with({
 						condition = function(utils)
-							return utils.root_has_file({ ".eslintrc.js" })
+							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json" })
 						end,
 					}),
-				  null_ls.builtins.code_actions.gitsigns,
+				  code_actions.gitsigns,
+					code_actions.eslint_d,
 					formatting.prettierd,
 					formatting.stylua,
 					formatting.rustfmt,
