@@ -12,14 +12,15 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.inccommand = "nosplit"
 vim.opt.hidden = true
+vim.opt.expandtab = true
 
 vim.opt.autoindent = true
 vim.opt.backspace = "indent,eol,start"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.tabstop = 2
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.cmd("syntax on")
 
-vim.g.mapleader="."
-vim.g["rainbow#pairs"] = { { "(", ")" }, { "[", "]" }, { "{", "}" } }
+vim.g.mapleader = "."
+vim.g["rainbow#pairs"] = { { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" } }
