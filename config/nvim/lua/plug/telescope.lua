@@ -32,7 +32,7 @@ return {
 			mode = { "n", "v", "i" },
 		},
 		{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-		{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+		{ "<leader>gcm", "<cmd>Telescope git_commits<CR>", desc = "commits" },
 		{ "<leader>gs", "<cmd>Telescope git_status<CR>",  desc = "status" },
 	},
 	config = function()
