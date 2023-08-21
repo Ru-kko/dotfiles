@@ -4,6 +4,12 @@ local servers = {
 	"tsserver",
 	"emmet_ls",
 	"hls",
+	"cssls",
+	"html",
+	"dockerls",
+	"docker_compose_language_service",
+	"eslint",
+	"sqlls",
 }
 
 local function attach_keys(_, buf)
@@ -120,9 +126,8 @@ return {
 					["<CR>"] = cmp.mapping.confirm({ select = false }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						local col = vim.fn.col(".") - 1
-
 						if cmp.visible() then
-							cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
+							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 						elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
 							fallback()
 						else
@@ -132,11 +137,11 @@ return {
 				}),
 				formatting = {
 					fields = { "menu", "abbr", "kind" },
-					format = require("lspkind").cmp_format({ maxwidth = 50 })
+					format = require("lspkind").cmp_format({ maxwidth = 50 }),
 				},
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
+					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 				}),
 			})
@@ -147,8 +152,20 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
+			{
+				"L3MON4D3/LuaSnip",
+				opts = {
+					history = true,
+					delete_check_events = "TextChanged",
+				},
+				dependencies = {
+					"rafamadriz/friendly-snippets",
+					config = function()
+						require("luasnip.loaders.from_vscode").lazy_load()
+					end,
+				},
+			},
 		},
 	},
 	{
