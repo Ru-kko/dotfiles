@@ -13,7 +13,7 @@ export FZF_CTRL_T_COMMAND="find \! \( -path '*/.git' -prune \) -printf '%P\n'"
 source $ZSH/oh-my-zsh.sh
 
 alias cat='bat'
-alias ls='exa --icons -la'
+alias ls='eza --icons -la'
 
 if [ "$TERM" = "xterm-kitty" ] 
 then
