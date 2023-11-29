@@ -5,7 +5,8 @@ local opts = { noremap = true, silent = true }
 keymap({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", opts)
 
 -- Close
-keymap({ "n", "i", "v", "t" }, "<C-q>", function()
+keymap("t", "<C-q>", "<cmd>q<cr>")
+keymap({ "n", "i", "v"}, "<C-q>", function()
     local file_buf_count = vim.api.nvim_buf_call(0, function()
         local count = 0
         for _, buf in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
@@ -42,7 +43,7 @@ keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
 
 keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 keymap("n", "s", "<cmd>Lspsaga hover_doc<CR>", opts)
-keymap("n", "er", "<cmd>Lspsaga show_line_diagnostics", opts)
+keymap("n", "er", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
 keymap("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
 keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", opts)
