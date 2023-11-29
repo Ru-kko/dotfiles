@@ -23,22 +23,24 @@ return {
 				"gofumpt",
 				"eslint_d",
 				"stylua",
+				"csharpier",
 			},
 			automatic_installation = true,
 		},
 		config = true,
 		dependencies = {
 			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
+			"nvimtools/none-ls.nvim",
 		},
 	},
 	-- formatting and lint
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local null_ls = require("null-ls")
-			local formatting, diagnostics,  code_actions = null_ls.builtins.formatting, null_ls.builtins.diagnostics, null_ls.builtins.code_actions
+			local formatting, diagnostics, code_actions =
+					null_ls.builtins.formatting, null_ls.builtins.diagnostics, null_ls.builtins.code_actions
 
 			local on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
@@ -54,12 +56,13 @@ return {
 							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json" })
 						end,
 					}),
-				  code_actions.gitsigns,
+					code_actions.gitsigns,
 					code_actions.eslint_d,
 					formatting.prettierd,
 					formatting.stylua,
 					formatting.rustfmt,
 					formatting.gofumpt,
+					formatting.csharpier,
 				},
 				on_attach = on_attach,
 			})
@@ -105,5 +108,11 @@ return {
 		dependencies = {
 			{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 		},
+	},
+	-- Block Moves
+	{
+		"fedepujol/move.nvim",
+		cmd = { "MoveLine", "MoveBlock" },
+		config = false,
 	},
 }
