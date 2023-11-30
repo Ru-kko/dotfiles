@@ -1,6 +1,4 @@
 return {
-	-- Notify
-	"rcarriga/nvim-notify",
 	-- Status bar
 	{
 		"nvim-lualine/lualine.nvim",
@@ -79,7 +77,7 @@ return {
 
 			vim.g.rainbow_delimiters = { highlight = highlight }
 			require("ibl").setup({
-				scope = { highlight = highlight }
+				scope = { highlight = highlight },
 			})
 
 			hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
@@ -88,35 +86,24 @@ return {
 	-- Command line
 	{
 		"folke/noice.nvim",
+		event = "VeryLazy",
 		opts = {
-			dependencies = {
-				"MunifTanjim/nui.nvim",
-				"nvim-tree/nvim-web-devicons",
-				"nvim-treesitter/nvim-treesitter",
-				{
-					"rcarriga/nvim-notify",
-					keys = {
-						{
-							"<leader>rm",
-							function()
-								require("notify").dismiss({ silent = true, pending = true })
-							end,
-							desc = "Delete all Notifications",
-						},
+			views = {
+				cmdline_popup = {
+					position = {
+						row = 5,
+						col = "50%",
 					},
-					opts = {
-						background_colour = "#000000",
-						timeout = 3000,
-						max_height = function()
-							return math.floor(vim.o.lines * 0.5)
-						end,
-						max_width = function()
-							return math.floor(vim.o.columns * 0.5)
-						end,
+					size = {
+						width = 60,
+						height = "auto",
 					},
 				},
 			},
-			ls = {
+			lsp = {
+				progress = {
+					enabled = false,
+				},
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
@@ -125,8 +112,36 @@ return {
 			presets = {
 				bottom_search = true,
 				command_palette = true,
-				long_message_to_split = true,
+				long_message_to_split = false,
 			},
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+	-- Notify
+	{
+		"rcarriga/nvim-notify",
+		keys = {
+			{
+				"<leader>rm",
+				function()
+					require("notify").dismiss({ silent = true, pending = true })
+				end,
+				desc = "Delete all Notifications",
+			},
+		},
+		opts = {
+			background_colour = "#000000",
+			timeout = 3000,
+			max_height = function()
+				return math.floor(vim.o.lines * 0.5)
+			end,
+			max_width = function()
+				return math.floor(vim.o.columns * 0.5)
+			end,
 		},
 	},
 }
