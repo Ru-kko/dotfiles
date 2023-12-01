@@ -24,15 +24,15 @@ return {
 				lsp_trouble = true,
 				indent_blankline = {
 					enabled = true,
-					colored_indent_levels = false,
+					colored_indent_levels = true,
 				},
 			},
 			styles = {
 				booleans = { "bold", "italic" },
-				keywords = { "italic" },
+				keywords = { "italic", "bold" },
 				loops = { "italic" },
 				operators = { "bold" },
-				functions = { "italic" },
+				functions = { "bold" },
 			},
 		},
 		config = function(_, opts)

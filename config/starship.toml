@@ -2,15 +2,15 @@
 
 format = """
 $character\
-[](fg:#021545)\
+[](bold fg:#021545)\
 $battery\
 $username\
-[](bg:#1d3961 fg:#021545)\
+[](bold bg:#1d3961 fg:#021545)\
 $directory\
-[](fg:#1d3961 bg:#325677)\
+[](bold fg:#1d3961 bg:#325677)\
 $git_branch\
 $git_status\
-[](fg:#325677 bg:#446e8a)\
+[](bold fg:#325677 bg:#446e8a)\
 $c\
 $elixir\
 $elm\
@@ -22,18 +22,20 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[](fg:#446e8a bg:#5b8da1)\
+[](bold fg:#446e8a bg:#5b8da1)\
 $docker_context\
-[](fg:#5b8da1 bg:#475b5f)\
+[](bold fg:#5b8da1 bg:#475b5f)\
 $time\
-[ ](fg:#475b5f)\
+[ ](bold fg:#475b5f)\
 """
 
 
 [battery]
-full_symbol = '🔋'
-charging_symbol = '⚡️'
+full_symbol = '󰁹'
+charging_symbol = '󰂄'
+unknown_symbol = '󰂃'
 discharging_symbol = '💀'
+empty_symbol = '󰂌'
 format = '[$symbol]( bg:#9A348E fg:#FFFFFF)'
 disabled = false
 
@@ -44,13 +46,13 @@ format = '[$symbol](fg:#FFFFFF)'
 
 [username]
 show_always = true
-style_user = "bg:#021545"
-style_root = "bg:#021545"
-format = '[ $user]($style)'
+style_user = "bold italic bg:#021545"
+style_root = "bold italic bg:#021545"
+format = '[ $user ]($style)'
 disabled = false
 
 [directory]
-style = "bg:#1d3961"
+style = "bold bg:#1d3961"
 format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
@@ -86,11 +88,11 @@ format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#325677"
+style = "bold bg:#325677"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#325677"
+style = "bold bg:#325677"
 format = '[$all_status$ahead_behind]($style)'
 
 [golang]
