@@ -13,6 +13,8 @@ local servers = {
 	"gopls",
 	"html",
 	"csharp_ls",
+	"phpactor",
+	"yamlls",
 }
 
 local function attach_keys(_, buf)
@@ -100,6 +102,7 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		config = function()
+			local defaults = require("cmp.config.default")()
 			local cmp = require("cmp")
 			---@diagnostic disable-next-line: missing-fields
 			cmp.setup({
@@ -130,11 +133,13 @@ return {
 				---@diagnostic disable-next-line: missing-fields
 				formatting = {
 					fields = { "menu", "abbr", "kind" },
-					format = require("lspkind").cmp_format({ maxwidth = 50 }),
+					format = require("lspkind").cmp_format({ maxwidth = 50, mode = "symbol_text", ellipsis_char = "..." }),
 				},
+				sorting = defaults.sorting,
 				sources = cmp.config.sources({
-					{ name = "luasnip" },
 					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "path" },
 					{ name = "buffer" },
 				}),
 			})
@@ -144,7 +149,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			{
 				"L3MON4D3/LuaSnip",
