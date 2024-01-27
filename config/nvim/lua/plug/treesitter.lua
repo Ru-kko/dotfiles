@@ -1,4 +1,5 @@
 local configs = require("nvim-treesitter.configs")
+---@diagnostic disable-next-line: missing-fields
 configs.setup {
   ensure_installed = {
     "bash",
@@ -28,6 +29,7 @@ configs.setup {
     "typescript",
     "vim",
     "yaml",
+    "astro",
   },
   auto_install = true,
   highlight = {

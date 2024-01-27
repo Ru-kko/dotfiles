@@ -56,6 +56,7 @@ return {
 							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json" })
 						end,
 					}),
+					diagnostics.php,
 					code_actions.gitsigns,
 					code_actions.eslint_d,
 					formatting.prettierd,
