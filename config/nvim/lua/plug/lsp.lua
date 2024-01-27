@@ -15,6 +15,7 @@ local servers = {
 	"csharp_ls",
 	"phpactor",
 	"yamlls",
+	"cssmodules_ls"
 }
 
 local function attach_keys(_, buf)
