@@ -12,6 +12,8 @@ return {
 					require("telescope.builtin").find_files({
 						cwd = vim.loop.cwd(),
 						hidden = true,
+						no_ignore = true,
+						no_ignore_parent = true,
 					})
 				end,
 				desc = "Find Plugin File",
@@ -24,7 +26,13 @@ return {
 			},
 			{
 				"<C-t>",
-				"<cmd>Telescope file_browser<CR>",
+				function ()
+					require("telescope").extensions.file_browser.file_browser({
+						hidden = true,
+						respect_gitignore = false,
+						no_ignore = true,
+					})
+				end,
 				mode = { "n", "v", "i" },
 			},
 			{
@@ -48,6 +56,8 @@ return {
 						"--line-number",
 						"--column",
 						"--smart-case",
+						"--no-ignore",
+						"--hidden"
 					},
 					prompt_prefix = " ",
 					selection_caret = " ",
@@ -68,7 +78,11 @@ return {
 					qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 					file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 					grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-					file_ignore_patterns = {},
+					file_ignore_patterns = {
+						"node_modules",
+						"pnpm-lock.yaml",
+						".git/",
+					},
 					path_display = { "absolute" },
 					sorting_strategy = "ascending",
 					winblend = 0,
