@@ -60,6 +60,9 @@ return {
 					code_actions.gitsigns,
 					code_actions.eslint_d,
 					formatting.prettierd,
+					formatting.prettier.with({
+						filetypes = { "astro" }
+					}),
 					formatting.stylua,
 					formatting.rustfmt,
 					formatting.gofumpt,
@@ -114,6 +117,6 @@ return {
 	{
 		"fedepujol/move.nvim",
 		cmd = { "MoveLine", "MoveBlock" },
-		config = false,
+		config = true,
 	},
 }
