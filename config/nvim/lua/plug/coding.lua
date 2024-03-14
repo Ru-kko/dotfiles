@@ -24,6 +24,7 @@ return {
 				"eslint_d",
 				"stylua",
 				"csharpier",
+				"phpstan"
 			},
 			automatic_installation = true,
 		},
@@ -51,26 +52,29 @@ return {
 			end
 			null_ls.setup({
 				sources = {
-					diagnostics.eslint_d.with({
+					require("none-ls.diagnostics.eslint_d").with({
 						condition = function(utils)
 							return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json" })
 						end,
 					}),
-					diagnostics.php,
+					diagnostics.phpstan,
 					code_actions.gitsigns,
-					code_actions.eslint_d,
+					require("none-ls.code_actions.eslint_d"),
 					formatting.prettierd,
 					formatting.prettier.with({
 						filetypes = { "astro" }
 					}),
 					formatting.stylua,
-					formatting.rustfmt,
+					require("none-ls.formatting.rustfmt"),
 					formatting.gofumpt,
 					formatting.csharpier,
 				},
 				on_attach = on_attach,
 			})
 		end,
+		dependencies = {
+	     "nvimtools/none-ls-extras.nvim",
+	   },
 	},
 	-- Indentation
 	{
