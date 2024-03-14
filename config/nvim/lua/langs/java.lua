@@ -73,15 +73,6 @@ local config = {
       }
     }
   },
-	on_attach = function (_, buf)
-		local keymap = vim.api.nvim_buf_set_keymap
-		keymap(
-			buf,
-			"n",
-			"<LEADER>ca",
-			"<cmd>:LspSaga code_action<CR>"
-		)
-	end,
 }
 
 return config
