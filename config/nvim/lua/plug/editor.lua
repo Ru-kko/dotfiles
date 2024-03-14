@@ -78,7 +78,7 @@ return {
     end,
     dependencies = "nvim-tree/nvim-web-devicons",
     keys = {
-      { "<leader>q", "<cmd>Trouble<CR>" },
+      { "<leader>q", "<cmd>TroubleToggle<CR>" },
     },
   },
   -- Code collapse
