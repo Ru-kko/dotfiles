@@ -32,3 +32,13 @@ case ":$PATH:" in
 esac
 # pnpm end
 [ -f "/home/rukko/.ghcup/env" ] && source "/home/rukko/.ghcup/env" # ghcup-env
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# path
+export PATH="$HOME/go/bin:$HOME/.local/bin:$PATH"
