@@ -34,10 +34,24 @@ $time\
 full_symbol = '󰁹'
 charging_symbol = '󰂄'
 unknown_symbol = '󰂃'
-discharging_symbol = '💀'
 empty_symbol = '󰂌'
-format = '[$symbol]( bg:#9A348E fg:#FFFFFF)'
+format = '[$percentage $symbol]( bg:#021545 fg:#FFFFFF)'
 disabled = false
+
+[[battery.display]]
+threshold = 20
+style = 'bold'
+discharging_symbol = '💀'
+
+[[battery.display]]
+threshold = 80
+style = 'bold'
+discharging_symbol = '󰁿'
+
+[[battery.display]]
+threshold = 100
+style = 'bold'
+discharging_symbol = '󰁹'
 
 [character]
 success_symbol = '✔ '
@@ -58,7 +72,7 @@ truncation_length = 2
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = " "
+"Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
@@ -68,7 +82,7 @@ truncation_symbol = "…/"
 [docker_context]
 symbol = " "
 style = "bg:#5b8da1"
-format = '[$symbol $context ]($style) $path'
+format = '[ $symbol $context $path]($style)'
 
 [c]
 symbol = " "
