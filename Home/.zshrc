@@ -25,13 +25,13 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pnpm
-export PNPM_HOME="/home/rukko/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
-[ -f "/home/rukko/.ghcup/env" ] && source "/home/rukko/.ghcup/env" # ghcup-env
+
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"

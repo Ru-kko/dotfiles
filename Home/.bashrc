@@ -18,3 +18,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 export PATH="$HOME/go/bin:$HOME/.local/bin:$PATH"
+
+
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
