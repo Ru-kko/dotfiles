@@ -1,0 +1,42 @@
+@import "themes/catppuccin.css";
+
+* {
+  color: @text;
+  border-radius: 10px;
+}
+
+#input {
+  font-weight: 400;
+  margin-bottom: 10px;
+  border: none;
+  background-color: @surface0;
+}
+
+#input:focus {
+  border: none;
+}
+
+#outer-box {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: @crust;
+}
+
+#img {
+  border-radius: 30px;
+}
+
+#entry:selected {
+  border: 1px @peach solid;
+  background: @surface0;
+}
+
+#text:selected {
+  color: @peach;
+}
+
+#scroll:focus {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  border: none;
+}
