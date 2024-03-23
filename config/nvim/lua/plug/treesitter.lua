@@ -30,6 +30,7 @@ configs.setup {
     "vim",
     "yaml",
     "astro",
+    "hyprlang",
   },
   auto_install = true,
   highlight = {
@@ -89,4 +90,6 @@ configs.setup {
   }
 }
 vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "" })
-
+vim.filetype.add({
+  pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
