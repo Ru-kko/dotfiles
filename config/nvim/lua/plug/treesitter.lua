@@ -30,6 +30,7 @@ configs.setup {
     "vim",
     "yaml",
     "astro",
+    "yuck",
     "hyprlang",
   },
   auto_install = true,
