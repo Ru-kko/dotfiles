@@ -16,6 +16,8 @@ local servers = {
 	"phpactor",
 	"yamlls",
 	"cssmodules_ls",
+	"pyright",
+	"rust_analyzer",
 	"astro",
 }
 

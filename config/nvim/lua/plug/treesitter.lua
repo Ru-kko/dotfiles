@@ -7,6 +7,8 @@ configs.setup {
     "comment",
     "cpp",
     "css",
+    "scss",
+    "rust",
     "diff",
     "gitattributes",
     "gitcommit",
