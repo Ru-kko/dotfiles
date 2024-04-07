@@ -4,7 +4,6 @@ configs.setup {
   ensure_installed = {
     "bash",
     "c",
-    "comment",
     "cpp",
     "css",
     "scss",

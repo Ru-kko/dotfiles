@@ -121,6 +121,63 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
+	-- BetterComents
+	{
+		"Djancyp/better-comments.nvim",
+		event        = { "VeryLazy" },
+		opts         = {
+			tags = {
+				{
+					name = "TODO",
+					fg = "#f9e2af",
+					bg = "",
+					bold = true,
+				},
+				{
+					name = "FIX",
+					fg = "#cba6f7",
+					bg = "",
+					bold = true,
+				},
+				{
+					name = "WARNING",
+					fg = "#f38ba8",
+					bg = "",
+					bold = false,
+				},
+				{
+					name = "INFO",
+					fg = "#74c7ec",
+					bg = "",
+					bold = false,
+				},
+				{
+					name = "!",
+					fg = "#f38ba8",
+					bg = "",
+					bold = true,
+				},
+				{
+					name = "*",
+					fg = "#a6e3a1",
+					bg = "",
+					bold = true,
+				},
+				{
+					name = "?",
+					fg = "#74c7ec",
+					bg = "",
+					bold = true,
+				},
+			},
+		},
+		config       = function(_, opts)
+			require('better-comment').Setup(opts)
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter"
+		}
+	},
 	-- Notify
 	{
 		"rcarriga/nvim-notify",
