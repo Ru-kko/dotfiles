@@ -1,4 +1,9 @@
 { pkgs, ... }:
+let
+  hyprlandGreeterConfig = pkgs.writeText "hyprland-regreet.conf" ''
+    exec-once = regreet; hyprctl dispatch exit
+  '';
+in {
 {
   environment.etc."regreet/bg.png".source = ../../assets/bg-lock.png;
 
@@ -9,7 +14,7 @@
         cmd = "${pkgs.regreet}/bin/regreet --cmd Hyprland";
       in {
         command = cmd;
-        user = "rukko";
+        user = "greeter";
       };
       background = {
         path = "/etc/regreet/bg.png";
