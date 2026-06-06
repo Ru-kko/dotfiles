@@ -2,7 +2,11 @@
 {
   programs.hyprland = {
     enable = true;
-    package = pkg.hyprland;
+    package = pkgs.hyprland;
+    xwayland = {
+      enable = true;
+      hidpi = true;
+    }
   };
 
   xdg.portal = {

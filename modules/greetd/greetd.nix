@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   hyprlandGreeterConfig = pkgs.writeText "hyprland-regreet.conf" ''
     exec-once = regreet; hyprctl dispatch exit
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    disable_hyprland_guiutils_check = true
   '';
 in {
   environment.etc."regreet/bg.png".source = ../../assets/bg-lock.png;
@@ -11,30 +14,39 @@ in {
     settings = {
       default_session = let
         cmd = ''
-          dbus-run-session ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland \
+          dbus-run-session ${config.programs.hyprland.package}/bin/Hyprland \
           -c ${hyprlandGreeterConfig}
         '';
       in {
         command = cmd;
         user = "greeter";
       };
+    };
+  };
+
+  programs.regreet = {
+    enable = true;
+    package = pkgs.greetd.regreet;
+
+    font = {
+      name = "Victor Mono Nerd Font";
+      size = 16;
+    };
+
+    cursorTheme = {
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
+    };
+    
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
+    settings = {
       background = {
         path = "/etc/regreet/bg.png";
         fit = "Cover";
-      };
-      font = {
-        name = "Victor Mono Nerd Font";
-        size = 16;
-      };
-
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
-      };
-
-      cursorTheme = {
-        name = "Catppuccin-Mocha-Dark-Cursors";
-        package = pkgs.catppuccin-cursors.mochaDark;
       };
     };
   };
