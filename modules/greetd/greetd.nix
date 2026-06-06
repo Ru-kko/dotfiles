@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 let
+  hyprlandPackage = config.programs.hyprland.package;
   hyprlandGreeterConfig = pkgs.writeText "hyprland-regreet.conf" ''
     hl.on("hyprland.start", function()
 	    hl.exec_cmd("regreet; hyprctl dispatch 'hl.dsp.exit()'")
@@ -19,7 +20,7 @@ in {
     enable = true;
     settings = {
       default_session = let
-        cmd = "dbus-run-session ${config.programs.hyprland.package}/bin/Hyprland -c ${hyprlandGreeterConfig}";
+        cmd = "${pkgs.dbus}/bin/dbus-run-session ${hyprlandPackage}/bin/Hyprland -c ${hyprlandGreeterConfig}";
       in {
         command = cmd;
         user = "greeter";
