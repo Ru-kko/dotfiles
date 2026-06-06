@@ -13,10 +13,7 @@ in {
     enable = true;
     settings = {
       default_session = let
-        cmd = ''
-          dbus-run-session ${config.programs.hyprland.package}/bin/Hyprland \
-          -c ${hyprlandGreeterConfig}
-        '';
+        cmd = "dbus-run-session ${config.programs.hyprland.package}/bin/Hyprland -- -c ${hyprlandGreeterConfig}";
       in {
         command = cmd;
         user = "greeter";

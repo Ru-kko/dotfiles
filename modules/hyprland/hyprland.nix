@@ -5,8 +5,7 @@
     package = pkgs.hyprland;
     xwayland = {
       enable = true;
-      hidpi = true;
-    }
+    };
   };
 
   xdg.portal = {
