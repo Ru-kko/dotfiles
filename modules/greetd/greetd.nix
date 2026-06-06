@@ -11,26 +11,24 @@
         command = cmd;
         user = "rukko";
       };
-    };
+      background = {
+        path = "/etc/regreet/bg.png";
+        fit = "Cover";
+      };
+      font = {
+        name = "Victor Mono Nerd Font";
+        size = 16;
+      };
 
-    font = {
-      name = "Victor Mono Nerd Font";
-      size = 16;
-    };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
 
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    cursorTheme = {
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
-    };
-
-    settings.background = {
-      path = "/etc/regreet/bg.png";
-      fit = "Cover";
+      cursorTheme = {
+        name = "Catppuccin-Mocha-Dark-Cursors";
+        package = pkgs.catppuccin-cursors.mochaDark;
+      };
     };
   };
 }
