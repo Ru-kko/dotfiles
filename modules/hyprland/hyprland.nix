@@ -2,7 +2,7 @@
 {
   programs.hyprland = {
     enable = true;
-    package = pkg.hyprland
+    package = pkg.hyprland;
   };
 
   xdg.portal = {
