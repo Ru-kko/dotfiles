@@ -4,5 +4,5 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  home-manager.users.rukko = import ./rukko;
+  home-manager.users.rukko = import ./rukko.nix;
 }
