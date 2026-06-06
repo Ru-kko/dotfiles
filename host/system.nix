@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-  ];
-  
   system.stateVersion = "26.05";
 
   networking = {
