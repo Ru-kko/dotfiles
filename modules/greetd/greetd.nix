@@ -1,10 +1,16 @@
 { pkgs, config, ... }:
 let
   hyprlandGreeterConfig = pkgs.writeText "hyprland-regreet.conf" ''
-    exec-once = regreet; hyprctl dispatch exit
-    disable_hyprland_logo = true
-    disable_splash_rendering = true
-    disable_hyprland_guiutils_check = true
+    hl.on("hyprland.start", function()
+	    hl.exec_cmd("regreet; hyprctl dispatch 'hl.dsp.exit()'")
+    end)
+    hl.config({
+    	misc = {
+		    disable_hyprland_logo = true,
+		    disable_splash_rendering = true,
+        disable_hyprland_guiutils_check = true,
+	    },
+    })
   '';
 in {
   environment.etc."regreet/bg.png".source = ../../assets/bg-lock.png;
@@ -13,7 +19,7 @@ in {
     enable = true;
     settings = {
       default_session = let
-        cmd = "dbus-run-session ${config.programs.hyprland.package}/bin/Hyprland -- -c ${hyprlandGreeterConfig}";
+        cmd = "dbus-run-session ${config.programs.hyprland.package}/bin/Hyprland -c ${hyprlandGreeterConfig}";
       in {
         command = cmd;
         user = "greeter";
