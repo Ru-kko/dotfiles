@@ -4,14 +4,16 @@ let
     exec-once = regreet; hyprctl dispatch exit
   '';
 in {
-{
   environment.etc."regreet/bg.png".source = ../../assets/bg-lock.png;
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = let
-        cmd = "${pkgs.regreet}/bin/regreet --cmd Hyprland";
+        cmd = ''
+          dbus-run-session ${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland \
+          -c ${hyprlandGreeterConfig}
+        '';
       in {
         command = cmd;
         user = "greeter";
